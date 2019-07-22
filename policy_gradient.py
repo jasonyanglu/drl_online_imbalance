@@ -48,6 +48,7 @@ class PolicyGradient:
 
         # gru
         gru = tf.nn.rnn_cell.GRUCell(self.hidden_dim)
+        init_state = gru.zero_state(1, dtype=tf.float32)
         _, self.output_state = gru(self.tf_obs, self.tf_hidden)
 
         # sampler fc1
